@@ -7,7 +7,7 @@
 @parent
 
 @endsection
-@section('title', 'Guia')
+@section('title', 'Sistema de Beca')
 @section('cabecera')
 
 <div class="col-sm-6">
@@ -57,12 +57,24 @@
         <div class="col-md-8">
           <div class="card">
             <div class="card-header">
-              Editar usuario
+              <h3>Editar usuario</h3>
             </div>
             <div class="card-body">
               <form action="{{ route('usuarios.update', $usuario->id) }}" method="post">
                 @method('PUT')
                 @csrf
+                <div class="form-group">
+                <label for="doc_id">Tipo ID</label>
+              <select name="doc_type" required class="form-control">
+                <option value="V">V</option>
+                <option value="E">E</option>
+                <option value="P">P</option>
+              </select>
+            </div>
+                <div class="form-group">
+                <label for="doc_id">Doc ID</label>
+                <input type="text" name="doc_id" required class="form-control" value="{{ $usuario->doc_id }}">
+              </div>
                 <div class="form-group">
                   <label for="name">Nombre</label>
                   <input type="text" name="name" required class="form-control" value="{{ $usuario->name }}">
@@ -93,6 +105,7 @@
                 </div>
                 <div class="justify-content-end">
                   <input type="submit" value="Modificar" class="btn btn-success">
+                  <a href="{{ url('/usuarios/') }}" class="btn btn-danger" style="float:right;">Cancelar</a>
                 </div>
               </form>
             </div>

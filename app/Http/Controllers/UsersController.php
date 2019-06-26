@@ -69,6 +69,8 @@ class UsersController extends Controller
         //dd($request->all());
         $usuario = new User;
 
+        $usuario->doc_type = $request->doc_type;
+        $usuario->doc_id = $request->doc_id;
         $usuario->name = $request->name;
         $usuario->last_name = $request->last_name;
         $usuario->email = $request->email;
@@ -123,7 +125,9 @@ class UsersController extends Controller
     public function update(Request $request, $id)
     {
         $usuario = User::findOrFail($id);
-
+        
+        $usuario->doc_type = $request->doc_type;
+        $usuario->doc_id = $request->doc_id;
         $usuario->name = $request->name;
         $usuario->last_name = $request->last_name;
         $usuario->email = $request->email;

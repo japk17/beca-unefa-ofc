@@ -15,6 +15,8 @@ class UsersTableSeeder extends Seeder
     {
         // usuario con el rol editor
         $lector = User::create([
+          'doc_type' => '',
+          'doc_id' => '',
           'name' => 'lector',
           'last_name' => 'c',
           'email' => 'lector@gmail.com',
@@ -25,6 +27,8 @@ class UsersTableSeeder extends Seeder
 
         // usuario con el rol moderador
         $moderador = User::create([
+          'doc_type' => '',
+          'doc_id' => '',
           'name' => 'moderador',
           'last_name' => 'b',
           'email' => 'moderador@gmail.com',
@@ -35,6 +39,8 @@ class UsersTableSeeder extends Seeder
 
         // usuario con el rol super-admin
         $admin = User::create([
+          'doc_type' => '',
+          'doc_id' => '',
           'name' => 'admin',
           'last_name' => 'a',
           'email' => 'admin@gmail.com',
