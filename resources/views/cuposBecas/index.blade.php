@@ -15,7 +15,7 @@
 </div><!-- /.col -->
 <div class="col-sm-6">
     <ol class="breadcrumb float-sm-right">
-        <li class="breadcrumb-item"><a href="/home">Home</a></li>
+        <li class="breadcrumb-item"><a href="/home">Inicio</a></li>
         <li class="breadcrumb-item active">Becas</li>
     </ol>
 </div>
@@ -67,13 +67,13 @@
                     @endcan
 
                     <table class="table" id="table">
-                        <thead>
-                            <th>Cedula</th>
-                            <th>Nombre</th>
-                            <th>Apellido</th>
-                            <th>Fecha nacimiento</th>
-                            <th>Tipo de Beca</th>
-                            <th>Acciones</th>
+                        <thead style="background:#2d90c4">
+                            <th style="color:white">Cedula</th>
+                            <th style="color:white">Nombre</th>
+                            <th style="color:white">Apellido</th>
+                            <th style="color:white">Fecha nacimiento</th>
+                            <th style="color:white">Tipo de Beca</th>
+                            <th style="color:white">Acciones</th>
                         </thead>
                         <tbody>
                         </tbody>
@@ -91,16 +91,19 @@
 
 <style>
 
-.dataTables_wrapper .dataTables_length {
-float: left;
-}
-.dataTables_wrapper .dataTables_filter {
-float: right;
-text-align: left;
-}
-.dataTables_wrapper .dataTables_paginate {
-float: right;
+    .dataTables_wrapper .dataTables_length {
+    float: left;
+    }
+    .dataTables_wrapper .dataTables_filter {
+    float: right;
+    text-align: left;
+    }
+    .dataTables_wrapper .dataTables_paginate {
+    float: right;
     }    
+    .dataTables_wrapper .dataTables_info {
+    float: left;
+    }       
 </style>
 <script>
 

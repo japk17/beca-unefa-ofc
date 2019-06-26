@@ -7,7 +7,7 @@
 @parent
 
 @endsection
-@section('title', 'Guia')
+@section('title', 'Sistema de Beca')
 @section('cabecera')
 
 <div class="col-sm-6">
@@ -63,6 +63,10 @@
               <form action="{{ route('usuarios.update', $usuario->id) }}" method="post">
                 @method('PUT')
                 @csrf
+                <div class="form-group">
+                <label for="doc_id">Doc ID</label>
+                <input type="text" name="doc_id" required class="form-control" value="{{ $usuario->doc_id }}">
+              </div>
                 <div class="form-group">
                   <label for="name">Nombre</label>
                   <input type="text" name="name" required class="form-control" value="{{ $usuario->name }}">

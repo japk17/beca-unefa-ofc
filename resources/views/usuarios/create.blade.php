@@ -64,6 +64,10 @@
             <form action="{{ url('usuarios') }}" method="post">
               @csrf
               <div class="form-group">
+                <label for="doc_id">Doc ID</label>
+                <input type="text" name="doc_id" required class="form-control">
+              </div>
+              <div class="form-group">
                 <label for="name">Nombre</label>
                 <input type="text" name="name" required class="form-control">
               </div>
