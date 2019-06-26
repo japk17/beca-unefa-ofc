@@ -62,7 +62,7 @@
                 <div class="card-body">
                     @can('create user')
                     <div class="row justify-content-end pb-2">
-                        <a href="#" class="btn btn-success">Nuevo Becado</a>
+                        <a href="{{route('add.view.cupo.beca')}}" class="btn btn-success">Nuevo Becado</a>
                     </div>
                     @endcan
 

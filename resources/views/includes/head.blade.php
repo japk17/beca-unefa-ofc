@@ -20,8 +20,8 @@
    <link href="/icon/fontawesome/css/all.css" rel="stylesheet">
    <!-- Ionicons -->
    <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+   <!-- Flash Flash -->
    <!-- Theme style -->
-   
    <link rel="stylesheet" href="/AdminLTE/plugins/iCheck/flat/blue.css">
    <link rel="stylesheet" href="/AdminLTE/dist/css/adminlte.min.css">
    <link rel="dns-prefetch" href="https://fonts.gstatic.com">

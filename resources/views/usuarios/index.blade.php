@@ -68,6 +68,7 @@
 
                     <table class="table" id="table">
                         <thead style="background:#2d90c4">
+                            <th style="color:white">Tipo ID</th>
                             <th style="color:white">Doc ID</th>
                             <th style="color:white">Nombre</th>
                             <th style="color:white">Apellido</th>
@@ -112,7 +113,8 @@
         serverSide: true,
         ajax: "{{route('users-list')}}",
         columns: [
-            
+
+            {data: 'doc_type', name: 'doc_type'},
             {data: 'doc_id', name: 'doc_id'},
             {data: 'name', name: 'name'},
             {data: 'last_name', name: 'last_name'},

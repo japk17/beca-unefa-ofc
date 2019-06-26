@@ -26,7 +26,7 @@
             <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
                 <!-- Add icons to the links using the .nav-icon class
 with font-awesome or any other icon font library -->
-                <li class="nav-item has-treeview menu-open">
+                <!--<li class="nav-item has-treeview menu-open">
                     <a href="#" class="nav-link active">
                         <i class="nav-icon fa fa-dashboard"></i>
                         <p>
@@ -48,14 +48,14 @@ with font-awesome or any other icon font library -->
                             </a>
                         </li>
                     </ul>
-                </li>
+                </li>-->
                 <li class="nav-item">
                     @role('super-admin')
                     <a href="{{route('usuarios.index')}}" class="nav-link">
                         <i class="nav-icon fa fa-th"></i>
                         <p>
                             SEGURIDAD
-                            <span class="right badge badge-danger">New</span>
+                            <!--<span class="right badge badge-danger">New</span>-->
                         </p>
                     </a>
                     @endrole
