@@ -93,6 +93,7 @@
               </div>
               <div class="justify-content-end">
                 <input type="submit" value="Crear" class="btn btn-success">
+                <a href="{{ url('/usuarios/') }}" class="btn btn-danger" style="float:right;">Cancelar</a>
               </div>
             </form>
           </div>

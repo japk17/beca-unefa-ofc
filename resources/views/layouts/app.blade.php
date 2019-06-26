@@ -160,6 +160,17 @@ Nora Silvester
                     <div class="container-fluid">
                         @yield('content')
 
+                        <style>
+
+                        .content-wrapper {
+	                    background-image: url(/images/fumda.png);
+	                    background-position:70% center;
+	                    background-repeat: no-repeat;
+	                    background-attachment:fixed;
+                        opacity: 111;
+                        }
+                        </style>
+
                     </div><!-- /.container-fluid -->
                 </div>
                 <!-- /.content -->
