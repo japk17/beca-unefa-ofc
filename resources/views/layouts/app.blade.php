@@ -167,7 +167,6 @@ Nora Silvester
 	                    background-position:70% center;
 	                    background-repeat: no-repeat;
 	                    background-attachment:fixed;
-                        opacity: 111;
                         }
                         </style>
 
