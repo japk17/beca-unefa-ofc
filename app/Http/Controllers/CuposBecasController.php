@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use App\TypeBeca;
 use App\CupoBeca;
-use App\Estudiante;
+use App\Estudiante;//
 use Illuminate\Http\Request;
 
 
@@ -22,7 +22,13 @@ class CuposBecasController extends Controller
 
 
     public function addView(){
-        $estudiantes    = Estudiante::all()->pluck('cedula','id');
+        //$estudiantes    = Estudiante::all()->pluck('cedula','id');
+        //dd($estudiantes);
+        $estudiantesobj    = Estudiante::all();
+        foreach($estudiantesobj as $estudiante){
+            
+            $estudiantes[$estudiante->id] = $estudiante->cedula.' - '.$estudiante->nombre.' '.$estudiante->apellido;
+        }
         $type_beca      = TypeBeca::all()->pluck('name','id');
         return view('cuposBecas.add',compact('estudiantes','type_beca'));
     }
@@ -67,14 +73,14 @@ class CuposBecasController extends Controller
         //dd($request->all());
         $cupo = CupoBeca::where('estudiante_id',$request->estudiante_id)->first();
         if(count($cupo) >= 1){
-            //Flash::success("¡Se ha registrado la siguiente entrada de forma exitosa!");
+            flash('Message', 'success');
             return redirect()->route('cuposbecas.index');
         } else {
             CupoBeca::create([
                 'estudiante_id' => $request->estudiante_id,
                 'type_beca_id' => $request->type_beca_id
             ]);
-            //Flash::success("¡Se ha registrado la siguiente entrada de forma exitosa!");
+            flash('Message', 'danger');
             return redirect()->route('cuposbecas.index');
         }
 
@@ -128,6 +134,6 @@ class CuposBecasController extends Controller
     public function eliminar($id){
         $cupo = CupoBeca::find($id);
         $cupo->delete();
-        return redirect()->route('cupo-beca.index');
+        return redirect()->route('cuposbecas.index');
     }
 }

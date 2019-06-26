@@ -32,6 +32,9 @@
         </ul>
     </div>
     @endif
+    
+    
+    
     @if(Session::has('message.nivel'))
 
     <div class="alert alert-{{ session('message.nivel') }} alert-dismissible" role="alert">

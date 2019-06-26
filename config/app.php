@@ -165,7 +165,7 @@ return [
         /*
          * Package Service Providers...
          */
-        
+
         Yajra\DataTables\DataTablesServiceProvider::class,
 
 
@@ -181,6 +181,7 @@ return [
         // mis providers
         Collective\Html\HtmlServiceProvider::class,
         Spatie\Permission\PermissionServiceProvider::class,
+        Laracasts\Flash\FlashServiceProvider::class,
         Orangehill\Iseed\IseedServiceProvider::class
 
 
