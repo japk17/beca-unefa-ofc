@@ -19,7 +19,8 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'doc_id', 'name', 'last_name', 'email', 'password',
+
+        'doc_type', 'doc_id', 'name', 'last_name', 'email', 'password',
     ];
 
     /**
@@ -31,6 +32,10 @@ class User extends Authenticatable
         'password', 'remember_token',
     ];
 
+    public function Useroles(){
+        return $this->hasMany('App\UserRole','model_id');
+    }
+    
     public function setPasswordAttribute($value)
     {
         if (!empty($value)) {

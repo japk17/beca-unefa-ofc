@@ -34,10 +34,12 @@ class UsersController extends Controller
     //Datatables laravel
     public function usersList()
     {
-        $users = User::all();
+        $users = User::with('Useroles.role')->get();
+                //dd(str_replace(['[',']','"'],'', $users[3]->Useroles->pluck('role')->pluck('name')->unique()));
+                //dd($users[3]);
         return datatables()->of($users)
-            ->addColumn('role', function ($user) {
-                return $user->name;
+            ->addColumn('roles', function ($user) {
+                return str_replace(['[',']','"'],' ', $user->Useroles->pluck('role')->pluck('name')->unique());
             })
             ->addColumn('action', function ($user) {
                 return '<a href="'.route("usuarios.edit",$user->id).'" class="btn btn-primary">Editar</a> &nbsp; 
@@ -69,6 +71,8 @@ class UsersController extends Controller
         //dd($request->all());
         $usuario = new User;
 
+
+        $usuario->doc_type = $request->doc_type;
         $usuario->doc_id = $request->doc_id;
         $usuario->name = $request->name;
         $usuario->last_name = $request->last_name;
@@ -80,7 +84,8 @@ class UsersController extends Controller
         //dd($usuario);
         if (empty($usuario->id) != true) {
             // asignar el rol
-            $usuario->syncRoles([$request->rol]);
+            //$usuario->syncRoles([$request->rol]);
+            $usuario->assignRole($request->rol);
 
             return redirect('/usuarios');
         }
@@ -124,7 +129,8 @@ class UsersController extends Controller
     public function update(Request $request, $id)
     {
         $usuario = User::findOrFail($id);
-
+        
+        $usuario->doc_type = $request->doc_type;
         $usuario->doc_id = $request->doc_id;
         $usuario->name = $request->name;
         $usuario->last_name = $request->last_name;

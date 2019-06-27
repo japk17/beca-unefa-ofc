@@ -55,7 +55,7 @@
 
  <div class="container">
     <div class="row justify-content-center">
-      <div class="col-md-8">
+      <div class="col-md-7">
         <div class="card">
           <div class="card-header">
             <h3>Nuevo usuario</h3>
@@ -63,6 +63,14 @@
           <div class="card-body">
             <form action="{{ url('usuarios') }}" method="post">
               @csrf
+              <div class="form-group" style="width:10%;">
+		          <label for="doc_type">Tipo ID</label>
+              <select name="doc_type" required class="form-control">
+                <option value="V">V</option>
+                <option value="E">E</option>
+                <option value="P">P</option>
+              </select>
+            </div>
               <div class="form-group">
                 <label for="doc_id">Doc ID</label>
                 <input type="text" name="doc_id" required class="form-control">
@@ -84,7 +92,7 @@
                 <input type="password" name="password" required class="form-control">
               </div>
               <div class="form-group">
-                <label for="email">Rol</label>
+                <label for="rol">Rol</label>
                 <select class="form-control" name="rol">
                   @foreach ($roles as $key => $value)
                     <option value="{{ $value }}">{{ $value }}</option>

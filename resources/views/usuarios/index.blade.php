@@ -68,12 +68,13 @@
 
                     <table class="table" id="table">
                         <thead style="background:#2d90c4">
-                            <th style="color:white">Doc ID</th>
-                            <th style="color:white">Nombre</th>
-                            <th style="color:white">Apellido</th>
-                            <th style="color:white">Correo</th>
-                            <th style="color:white">Rol</th>
-                            <th style="color:white">Acciones</th>
+                            <th nowrap style="color:white">Tipo ID</th>
+                            <th nowrap style="color:white">Doc ID</th>
+                            <th nowrap style="color:white">Nombre</th>
+                            <th nowrap style="color:white">Apellido</th>
+                            <th nowrap style="color:white">Correo</th>
+                            <th nowrap style="color:white">Rol</th>
+                            <th nowrap style="color:white">Acciones</th>
                         </thead>
                         <tbody>
                         </tbody>
@@ -87,22 +88,22 @@
 @section('js-inferior')
 @parent
 
-	<script type="text/javascript" language="javascript" src="/js/jquery.dataTables.js"></script>
+<script type="text/javascript" language="javascript" src="/js/jquery.dataTables.js"></script>
 
 <style>
 
     .dataTables_wrapper .dataTables_length {
-    float: left;
+        float: left;
     }
     .dataTables_wrapper .dataTables_filter {
-    float: right;
-    text-align: left;
+        float: right;
+        text-align: left;
     }
     .dataTables_wrapper .dataTables_paginate {
-    float: right;
+        float: right;
     }    
     .dataTables_wrapper .dataTables_info {
-    float: left;
+        float: left;
     }    
 </style>
 <script>
@@ -112,15 +113,25 @@
         serverSide: true,
         ajax: "{{route('users-list')}}",
         columns: [
-            
+
+            {data: 'doc_type', name: 'doc_type'},
             {data: 'doc_id', name: 'doc_id'},
             {data: 'name', name: 'name'},
             {data: 'last_name', name: 'last_name'},
             {data: 'email', name: 'email'},
-            {data: 'role', name: 'role'},
+            {data: 'roles', name: 'roles'},
             {data: 'action', name: 'action'}
         ],
-        order: [[1, 'asc']]
+        order: [[1, 'asc']],
+        "lengthChange": false,
+        "searching": true,
+        "ordering": true,
+        "width": true,
+        "info": true,
+        "stateSave": true,
+        "autoWidth": false,
+        "dom": 'Bfrtip',
+        "paging": true
     });
 
 </script>
