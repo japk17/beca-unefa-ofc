@@ -11,11 +11,7 @@ use Illuminate\Http\Request;
 
 class CuposBecasController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+
     public function index()
     {
         return view('cuposBecas.index');
@@ -63,70 +59,42 @@ class CuposBecasController extends Controller
 
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
+
     public function store(Request $request)
     {
         //dd($request->all());
         $cupo = CupoBeca::where('estudiante_id',$request->estudiante_id)->first();
-        if(count($cupo) >= 1){
-            flash('Message', 'success');
+        
+        if(empty($cupo->id) != true){
+            flash('Ya se encuentra registrado', 'danger');
             return redirect()->route('cuposbecas.index');
         } else {
             CupoBeca::create([
                 'estudiante_id' => $request->estudiante_id,
                 'type_beca_id' => $request->type_beca_id
             ]);
-            flash('Message', 'danger');
+            flash('Cupo Registrado', 'success');
             return redirect()->route('cuposbecas.index');
         }
 
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function show($id)
     {
-        //
+        dd($id);
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
+
     public function edit($id)
     {
         //
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function update(Request $request, $id)
     {
         //
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function destroy(Request $request,$id)
     {
         $incidencia = Incidencia::create([
@@ -134,9 +102,12 @@ class CuposBecasController extends Controller
             'estudiante_id'     => $request->estudiante_id,
             'explication'       => $request->observacion
         ]);
-        if(count($incidencia) > 0){
+        if(empty($incidencia->id) != true){
             $cupo = CupoBeca::find($id);
             $cupo->delete();
+            flash('Cupo Eliminado', 'success');
+        } else {
+            flash('Cupo no eliminado', 'danger');
         }
         
         return redirect()->route('cuposbecas.index');

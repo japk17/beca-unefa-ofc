@@ -85,7 +85,7 @@
                 <div class="form-group row">
                     <div class="col-12">
                         <label class="form-control-label">Tipo de Beca</label>
-                        {!! Form::textArea('observacion',null,['class' => 'form-control','rows' => '3'])!!}
+                        {!! Form::textArea('observacion',null,['class' => 'form-control','required','rows' => '3'])!!}
                     </div>
                 </div>
                 <input type="hidden" name="estudiante_id" value="{{$cupo->estudiante_id}}">

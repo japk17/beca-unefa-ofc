@@ -69,6 +69,14 @@ with font-awesome or any other icon font library -->
                         </p>
                     </a>
                 </li>
+                <li class="nav-item">
+                    <a href="{{route('incidencias.index')}}" class="nav-link">
+                        <i class="nav-icon fa fa-th"></i>
+                        <p>
+                            Incidencias de Becados
+                        </p>
+                    </a>
+                </li>
             </ul>
         </nav>
         <!-- /.sidebar-menu -->

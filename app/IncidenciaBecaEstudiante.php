@@ -13,4 +13,12 @@ class IncidenciaBecaEstudiante extends Model
         'estudiante_id',
         'explication',
     ];
+    
+    public function estudiante(){
+        return $this->belongsTo('App\Estudiante');
+    }
+    
+    public function typebeca(){
+        return $this->belongsTo('App\TypeBeca','type_beca_id');
+    }
 }

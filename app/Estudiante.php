@@ -14,4 +14,8 @@ class Estudiante extends Model
         'cedula',
         'fecha_nacimiento',
     ];
+    
+    public function incidenciasbeca(){
+        return $this->hasMany('App\IncidenciaBecaEstudiante','estudiante_id');
+    }
 }

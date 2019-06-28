@@ -19,7 +19,7 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 
-Route::group(['middleware' => ['auth','role:super-admin|lector|moderador']], function() {
+Route::group(['middleware' => ['auth','role:super-admin']], function() {
     Route::resource('usuarios', 'UsersController');
     Route::get('users-delete/{id}', 'UsersController@destroy')->name('usuarios.delete');
 });
@@ -28,6 +28,10 @@ Route::group(['prefix' => 'cuposbecas','middleware' => 'auth'], function() {
     Route::resource('cuposbecas', 'CuposBecasController');
     Route::get('Add-cupo', 'CuposBecasController@addView')->name('add.view.cupo.beca');
     Route::get('pre-eliminar-cupo/{id}', 'CuposBecasController@eliminar')->name('pre-eliminar.cupo.beca');
+});
+
+Route::group(['prefix' => 'Incidencias','middleware' => 'auth'], function() {
+    Route::resource('incidencias', 'IncidenciasBecasController');
 });
 
 Route::get('guia/',function(){
