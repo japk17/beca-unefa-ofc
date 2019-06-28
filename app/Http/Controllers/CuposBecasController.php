@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\TypeBeca;
 use App\CupoBeca;
 use App\Estudiante;//
+use App\IncidenciaBecaEstudiante as Incidencia;//
 use Illuminate\Http\Request;
 
 
@@ -26,7 +27,7 @@ class CuposBecasController extends Controller
         //dd($estudiantes);
         $estudiantesobj    = Estudiante::all();
         foreach($estudiantesobj as $estudiante){
-            
+
             $estudiantes[$estudiante->id] = $estudiante->cedula.' - '.$estudiante->nombre.' '.$estudiante->apellido;
         }
         $type_beca      = TypeBeca::all()->pluck('name','id');
@@ -56,7 +57,7 @@ class CuposBecasController extends Controller
             })
             ->addColumn('action', function ($estudiantes) {
                 return '<!--<a href="'.route("cuposbecas.edit",$estudiantes->id).'" class="btn btn-primary">Editar</a> &nbsp;-->&nbsp;
-                <a href="'.route("eliminar.cupo.beca",$estudiantes->id).'" class="btn btn-danger">Eliminar</a> &nbsp;';
+                <a href="'.route("pre-eliminar.cupo.beca",$estudiantes->id).'" class="btn btn-danger">Eliminar</a> &nbsp;';
             })
             ->editColumn('id', 'ID: {{$id}}')->toJson();
 
@@ -126,14 +127,25 @@ class CuposBecasController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Request $request,$id)
     {
-        //
+        $incidencia = Incidencia::create([
+            'type_beca_id'      => $request->type_beca_id,
+            'estudiante_id'     => $request->estudiante_id,
+            'explication'       => $request->observacion
+        ]);
+        if(count($incidencia) > 0){
+            $cupo = CupoBeca::find($id);
+            $cupo->delete();
+        }
+        
+        return redirect()->route('cuposbecas.index');
     }
-    
+
     public function eliminar($id){
         $cupo = CupoBeca::find($id);
-        $cupo->delete();
-        return redirect()->route('cuposbecas.index');
+        $cupo->load('estudiante','typeBeca');
+        //dd($cupo);
+        return view('cuposBecas.create',compact('cupo'));
     }
 }
