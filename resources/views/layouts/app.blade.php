@@ -163,7 +163,7 @@ Nora Silvester
                         <style>
 
                         .content-wrapper {
-	                    background-image: url(/images/fumda.png);
+	                    background-image: url(/images/fumda1.png);
 	                    background-position:70% center;
 	                    background-repeat: no-repeat;
 	                    background-attachment:fixed;

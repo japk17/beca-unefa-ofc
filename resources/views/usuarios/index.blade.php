@@ -108,7 +108,7 @@
         float: left;
     }    
     .paginate_button {
-        background-color: #2d90c4; /* Green */
+        background-color: #2d90c4;
         color: white;
         padding: 5px 5px;
         text-align: center;
