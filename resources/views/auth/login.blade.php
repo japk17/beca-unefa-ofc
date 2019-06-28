@@ -9,7 +9,7 @@
 
             /* Ubicación de la imagen */
 
-            background-image: url(/images/fondounefav1.jpg);
+            background-image: url(/images/pasantia_when.jpg);
 
             /* Para dejar la imagen de fondo centrada, vertical y
 

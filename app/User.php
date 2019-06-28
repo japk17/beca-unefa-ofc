@@ -32,6 +32,10 @@ class User extends Authenticatable
         'password', 'remember_token',
     ];
 
+    public function Useroles(){
+        return $this->hasMany('App\UserRole','model_id');
+    }
+    
     public function setPasswordAttribute($value)
     {
         if (!empty($value)) {

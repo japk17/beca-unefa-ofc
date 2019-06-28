@@ -54,7 +54,7 @@
 @section('content')
 <div class="container">
       <div class="row justify-content-center">
-        <div class="col-md-8">
+        <div class="col-md-7">
           <div class="card">
             <div class="card-header">
               <h3>Editar usuario</h3>
@@ -63,8 +63,8 @@
               <form action="{{ route('usuarios.update', $usuario->id) }}" method="post">
                 @method('PUT')
                 @csrf
-                <div class="form-group">
-                <label for="doc_id">Tipo ID</label>
+                <div class="form-group" style="width:10%;">
+                <label for="doc_type">Tipo ID</label>
               <select name="doc_type" required class="form-control">
                 <option value="V">V</option>
                 <option value="E">E</option>
@@ -92,7 +92,7 @@
                   <input type="password" name="password" required class="form-control">
                 </div>
                 <div class="form-group">
-                  <label for="email">Rol</label>
+                  <label for="rol">Rol</label>
                   <select class="form-control" name="rol">
                     @foreach ($roles as $key => $value)
                         @if ($usuario->hasRole($value))
