@@ -98,7 +98,7 @@
         float: left;
     }
     .dataTables_wrapper .dataTables_filter {
-        float: left;
+        float: right;
         text-align: left;
     }
     .dataTables_wrapper .dataTables_paginate {
@@ -139,8 +139,7 @@
         "info": true,
         "stateSave": true,
         "autoWidth": true,
-        "dom": 'Bfrtip',
-        "paging": true
+        "paging": true,
     });
 
 </script>

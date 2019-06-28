@@ -13,7 +13,7 @@
         <!-- Styles -->
         <style>
             html, body {
-                background-image: url(/images/unefa_when.jpg);
+                background-image: url(/images/pasantia_when.jpg);
                 background-position: center top;
                 background-repeat: no-repeat;
                 background-attachment: fixed;
@@ -104,8 +104,8 @@
                 </div>-->
             </div>
         </div>
-        <div class="footer">
-        <footer class="main-footer" style="max-height: 100px;text-align: center">
+        <div class="footer" style="height:4%;">
+        <footer class="main-footer" style="text-align: center">
         <strong>Copyright © 2019 <a href="http://www.unefa.edu.ve/portal/">UNEFA</a>.</strong>
         <b> Todos los derechos reservados.</b>
         </footer>
