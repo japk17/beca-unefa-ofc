@@ -21,7 +21,7 @@ Route::get('/home', 'HomeController@index')->name('home');
 
 Route::group(['middleware' => ['auth','role:super-admin|lector|moderador']], function() {
     Route::resource('usuarios', 'UsersController');
-    Route::get('users-delete/{id}', 'UsersController@destroy2')->name('usuarios.delete');
+    Route::get('users-delete/{id}', 'UsersController@destroy')->name('usuarios.delete');
 });
 
 Route::group(['prefix' => 'cuposbecas','middleware' => 'auth'], function() {
