@@ -15,10 +15,10 @@ class AddIncidenciasBecasEstudiantesTable extends Migration
     {
         Schema::create('incidencias_becas_estudiantes', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('cupo_beca_id')->unsigned();
+            $table->integer('type_beca_id')->unsigned();
             $table->integer('estudiante_id')->unsigned();
             $table->string('explication');
-            $table->foreign('cupo_beca_id')->references('id')->on('cupos_becas')->unsigned();
+            $table->foreign('type_beca_id')->references('id')->on('type_becas')->unsigned();
             $table->foreign('estudiante_id')->references('id')->on('estudiantes')->unsigned();
             $table->timestamps();
         });
