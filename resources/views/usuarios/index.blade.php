@@ -68,13 +68,15 @@
 
                     <table class="table" id="table">
                         <thead style="background:#2d90c4">
-                            <th nowrap style="color:white">Tipo ID</th>
-                            <th nowrap style="color:white">Doc ID</th>
+
+                            <th nowrap style="color:white">Tipo</th>
+                            <th nowrap style="color:white">ID</th>
                             <th nowrap style="color:white">Nombre</th>
                             <th nowrap style="color:white">Apellido</th>
                             <th nowrap style="color:white">Correo</th>
                             <th nowrap style="color:white">Rol</th>
                             <th nowrap style="color:white">Acciones</th>
+
                         </thead>
                         <tbody>
                         </tbody>
@@ -96,7 +98,7 @@
         float: left;
     }
     .dataTables_wrapper .dataTables_filter {
-        float: right;
+        float: left;
         text-align: left;
     }
     .dataTables_wrapper .dataTables_paginate {
@@ -105,6 +107,13 @@
     .dataTables_wrapper .dataTables_info {
         float: left;
     }    
+    .paginate_button {
+        background-color: #2d90c4; /* Green */
+        color: white;
+        padding: 5px 5px;
+        text-align: center;
+        display: inline-block;
+    }
 </style>
 <script>
 
@@ -123,13 +132,13 @@
             {data: 'action', name: 'action'}
         ],
         order: [[1, 'asc']],
-        "lengthChange": false,
+        "lengthChange": true,
         "searching": true,
         "ordering": true,
         "width": true,
         "info": true,
         "stateSave": true,
-        "autoWidth": false,
+        "autoWidth": true,
         "dom": 'Bfrtip',
         "paging": true
     });
