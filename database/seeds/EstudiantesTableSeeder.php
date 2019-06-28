@@ -37,6 +37,26 @@ class EstudiantesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
+            2 => 
+            array (
+                'id' => 3,
+                'nombre' => 'Gabriela ',
+                'apellido' => 'Perez Gonzalez',
+                'cedula' => 78914232,
+                'fecha_nacimiento' => '1992-05-26',
+                'created_at' => NULL,
+                'updated_at' => NULL,
+            ),
+            3 => 
+            array (
+                'id' => 4,
+                'nombre' => 'Carlos Lucas',
+                'apellido' => 'Alvares Peña',
+                'cedula' => 112255973,
+                'fecha_nacimiento' => '1982-02-02',
+                'created_at' => NULL,
+                'updated_at' => NULL,
+            ),
         ));
         
         

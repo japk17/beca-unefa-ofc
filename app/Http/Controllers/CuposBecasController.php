@@ -2,9 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
-use App\Estudiante;
+use App\TypeBeca;
 use App\CupoBeca;
+use App\Estudiante;//
+use Illuminate\Http\Request;
+
 
 class CuposBecasController extends Controller
 {
@@ -18,11 +20,19 @@ class CuposBecasController extends Controller
         return view('cuposBecas.index');
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+
+    public function addView(){
+        //$estudiantes    = Estudiante::all()->pluck('cedula','id');
+        //dd($estudiantes);
+        $estudiantesobj    = Estudiante::all();
+        foreach($estudiantesobj as $estudiante){
+            
+            $estudiantes[$estudiante->id] = $estudiante->cedula.' - '.$estudiante->nombre.' '.$estudiante->apellido;
+        }
+        $type_beca      = TypeBeca::all()->pluck('name','id');
+        return view('cuposBecas.add',compact('estudiantes','type_beca'));
+    }
+
     public function create()
     {
         //
@@ -45,7 +55,8 @@ class CuposBecasController extends Controller
                 return $estudiantes->estudiante->fecha_nacimiento;
             })
             ->addColumn('action', function ($estudiantes) {
-                return '<!--<a href="'.route("cuposbecas.edit",$estudiantes->id).'" class="btn btn-primary">Editar</a> &nbsp;-->';
+                return '<!--<a href="'.route("cuposbecas.edit",$estudiantes->id).'" class="btn btn-primary">Editar</a> &nbsp;-->&nbsp;
+                <a href="'.route("eliminar.cupo.beca",$estudiantes->id).'" class="btn btn-danger">Eliminar</a> &nbsp;';
             })
             ->editColumn('id', 'ID: {{$id}}')->toJson();
 
@@ -59,7 +70,20 @@ class CuposBecasController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        //dd($request->all());
+        $cupo = CupoBeca::where('estudiante_id',$request->estudiante_id)->first();
+        if(count($cupo) >= 1){
+            flash('Message', 'success');
+            return redirect()->route('cuposbecas.index');
+        } else {
+            CupoBeca::create([
+                'estudiante_id' => $request->estudiante_id,
+                'type_beca_id' => $request->type_beca_id
+            ]);
+            flash('Message', 'danger');
+            return redirect()->route('cuposbecas.index');
+        }
+
     }
 
     /**
@@ -105,5 +129,11 @@ class CuposBecasController extends Controller
     public function destroy($id)
     {
         //
+    }
+    
+    public function eliminar($id){
+        $cupo = CupoBeca::find($id);
+        $cupo->delete();
+        return redirect()->route('cuposbecas.index');
     }
 }
