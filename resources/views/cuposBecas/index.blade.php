@@ -44,14 +44,13 @@
         <div class="col-lg-12">
             <div class="card">
                 <div class="card-header"><h3>Lista de Becados</h3></div>
-
                 <div class="card-body">
                     @can('create user')
-                    <div class="row justify-content-end pb-2">
+                    <div class="row justify-content-star">
                         <a href="{{route('add.view.cupo.beca')}}" class="btn btn-success">Nuevo Becado</a>
                     </div>
                     @endcan
-
+                    <br/>
                     <table class="table" id="table">
                         <thead style="background:#2d90c4">
                             <th style="color:white">Cedula</th>
@@ -73,22 +72,22 @@
 @section('js-inferior')
 @parent
 
-	<script type="text/javascript" language="javascript" src="/js/jquery.dataTables.js"></script>
+<script type="text/javascript" language="javascript" src="/js/jquery.dataTables.js"></script>
 
 <style>
 
     .dataTables_wrapper .dataTables_length {
-    float: left;
+        float: left;
     }
     .dataTables_wrapper .dataTables_filter {
-    float: right;
-    text-align: left;
+        float: right;
+        text-align: left;
     }
     .dataTables_wrapper .dataTables_paginate {
-    float: right;
+        float: right;
     }    
     .dataTables_wrapper .dataTables_info {
-    float: left;
+        float: left;
     }     
     .paginate_button {
         background-color: #2d90c4;
@@ -105,7 +104,7 @@
         serverSide: true,
         ajax: "{{route('cuposbecas.create')}}",
         columns: [
-            
+
             {data: 'cedula', name: 'cedula'},
             {data: 'name', name: 'name'},
             {data: 'last_name', name: 'last_name'},
@@ -113,7 +112,36 @@
             {data: 'type_beca', name: 'type_beca'},
             {data: 'action', name: 'action'}
         ],
-        order: [[1, 'asc']]
+                order: [[1, 'asc']],
+        "lengthChange": true,
+        "searching": true,
+        "ordering": true,
+        "width": true,
+        "info": true,
+        "stateSave": true,
+        "autoWidth": true,
+        "paging": true,
+
+        language: {
+            "decimal": "",
+            "emptyTable": "No hay información",
+            "info": "Mostrando _START_ a _END_ de _TOTAL_ Entradas",
+            "infoEmpty": "Mostrando 0 to 0 of 0 Entradas",
+            "infoFiltered": "(Filtrado de _MAX_ total entradas)",
+            "infoPostFix": "",
+            "thousands": ",",
+            "lengthMenu": "Mostrar _MENU_ Entradas",
+            "loadingRecords": "Cargando...",
+            "processing": "Procesando...",
+            "search": "Buscar:",
+            "zeroRecords": "Sin resultados encontrados",
+            "paginate": {
+                "first": "Primero",
+                "last": "Ultimo",
+                "next": "Siguiente",
+                "previous": "Anterior"
+            }
+        },
     });
 
 </script>

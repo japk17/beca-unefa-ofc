@@ -61,30 +61,31 @@
 
                 <div class="card-body">
                     @can('create user')
-                    <div class="row justify-content-end pb-2">
+                    <div class="row justify-content-star">
                         <a href="{{ url('/usuarios/create') }}" class="btn btn-success">Nuevo usuario</a>
                     </div>
                     @endcan
+                    </br>
 
-                    <table class="table" id="table">
-                        <thead style="background:#2d90c4">
+                <table class="table" id="table">
+                    <thead style="background:#2d90c4">
 
-                            <th nowrap style="color:white">Tipo</th>
-                            <th nowrap style="color:white">ID</th>
-                            <th nowrap style="color:white">Nombre</th>
-                            <th nowrap style="color:white">Apellido</th>
-                            <th nowrap style="color:white">Correo</th>
-                            <th nowrap style="color:white">Rol</th>
-                            <th nowrap style="color:white">Acciones</th>
+                        <th nowrap style="color:white">Tipo</th>
+                        <th nowrap style="color:white">ID</th>
+                        <th nowrap style="color:white">Nombre</th>
+                        <th nowrap style="color:white">Apellido</th>
+                        <th nowrap style="color:white">Correo</th>
+                        <th nowrap style="color:white">Rol</th>
+                        <th nowrap style="color:white">Acciones</th>
 
-                        </thead>
-                        <tbody>
-                        </tbody>
-                    </table>
-                </div>
+                    </thead>
+                    <tbody>
+                    </tbody>
+                </table>
             </div>
         </div>
     </div>
+</div>
 </div>
 
 @section('js-inferior')
@@ -140,6 +141,27 @@
         "stateSave": true,
         "autoWidth": true,
         "paging": true,
+
+        language: {
+            "decimal": "",
+            "emptyTable": "No hay información",
+            "info": "Mostrando _START_ a _END_ de _TOTAL_ Entradas",
+            "infoEmpty": "Mostrando 0 to 0 of 0 Entradas",
+            "infoFiltered": "(Filtrado de _MAX_ total entradas)",
+            "infoPostFix": "",
+            "thousands": ",",
+            "lengthMenu": "Mostrar _MENU_ Entradas",
+            "loadingRecords": "Cargando...",
+            "processing": "Procesando...",
+            "search": "Buscar:",
+            "zeroRecords": "Sin resultados encontrados",
+            "paginate": {
+                "first": "Primero",
+                "last": "Ultimo",
+                "next": "Siguiente",
+                "previous": "Anterior"
+            }
+        },
     });
 
 </script>

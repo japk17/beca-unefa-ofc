@@ -7,7 +7,7 @@
 @parent
 
 @endsection
-@section('title', 'Incidencias')
+@section('title', 'Sistema de Beca')
 @section('cabecera')
 
 <div class="col-sm-6">
@@ -42,8 +42,7 @@
 
             <div class="card-header">
                 <h3 class="card-title">
-                    <i class="fa fa-tag"></i>
-                    Incidencias
+                    <h3>Registro de Incidencias</h3>
                 </h3>
             </div>
 

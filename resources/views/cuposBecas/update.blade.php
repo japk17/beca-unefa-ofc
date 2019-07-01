@@ -7,7 +7,7 @@
 @parent
 
 @endsection
-@section('title', 'Inicidencia de Eliminacion')
+@section('title', 'Sistema de Beca')
 @section('cabecera')
 
 <div class="col-sm-6">
@@ -64,7 +64,7 @@
             </div>
 
             <div class="card-body">
-                {!! Form::open(['route' => ['cuposbecas.destroy',$cupo->id], 'method' => 'delete'])!!}
+                {!! Form::open(['route' => ['cuposbecas.update',$cupo->id], 'method' => 'PUT'])!!}
                 <h5 class="">Estudiante</h5>
                 <div class="form-group row">
                     <br>
@@ -81,6 +81,19 @@
                         {!! Form::text('tupybeca',$cupo->typeBeca->name,['class' => 'form-control','disabled'])!!}
                     </div>
                 </div>
+                <h5 class="">Datos</h5>
+                <div class="form-group row">
+                    <div class="col-sm-6">
+
+                        <label>Cedula Estudiantes:</label>
+                        {!! Form::select('estudiante_id',$estudiantes,$cupo->estudiante_id,['class' => 'form-control select2'])!!}
+                    </div>
+                    <div class="col-sm-6">
+                        <label>Tipo de Beca:</label>
+                        {!! Form::select('type_beca_id',$type_beca,$cupo->type_beca_id,['class' => 'form-control select2'])!!}
+
+                    </div>
+                </div>
                 <h5 class="">Observacion</h5>
                 <div class="form-group row">
                     <div class="col-12">
@@ -88,15 +101,18 @@
                         {!! Form::textArea('observacion',null,['class' => 'form-control','required','rows' => '3'])!!}
                     </div>
                 </div>
-                <input type="hidden" name="estudiante_id" value="{{$cupo->estudiante_id}}">
-                <input type="hidden" name="type_beca_id" value="{{$cupo->type_beca_id}}">
                 <div class="form-group row">
-                    <div class="col-12 text-center">
-                        <input type="submit" class="btn btn-danger" value="Delete">
+                    <div class="col-md-12">
+                        <center>
+                            <input type="submit" class="btn btn-primary" name="" value="Guardar">
+                        </center>
                     </div>
                 </div>
+                <input type="hidden" name="estudiamte_old_id" value="{{$cupo->estudiante_id}}">
+                <input type="hidden" name="estudiamte_old_cedula" value="{{$cupo->estudiante->cedula}}">
                 {!! form::close()!!}
             </div>
+
         </div>
     </div>
 </div>

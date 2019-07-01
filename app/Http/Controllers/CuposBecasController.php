@@ -52,7 +52,7 @@ class CuposBecasController extends Controller
                 return $estudiantes->estudiante->fecha_nacimiento;
             })
             ->addColumn('action', function ($estudiantes) {
-                return '<!--<a href="'.route("cuposbecas.edit",$estudiantes->id).'" class="btn btn-primary">Editar</a> &nbsp;-->&nbsp;
+                return '<a href="'.route('cuposbecas.edit',$estudiantes->id).'" class="btn btn-primary">Editar</a> &nbsp;&nbsp;
                 <a href="'.route("pre-eliminar.cupo.beca",$estudiantes->id).'" class="btn btn-danger">Eliminar</a> &nbsp;';
             })
             ->editColumn('id', 'ID: {{$id}}')->toJson();
@@ -64,7 +64,7 @@ class CuposBecasController extends Controller
     {
         //dd($request->all());
         $cupo = CupoBeca::where('estudiante_id',$request->estudiante_id)->first();
-        
+
         if(empty($cupo->id) != true){
             flash('Ya se encuentra registrado', 'danger');
             return redirect()->route('cuposbecas.index');
@@ -87,12 +87,42 @@ class CuposBecasController extends Controller
 
     public function edit($id)
     {
-        //
+        $estudiantesobj    = Estudiante::all();
+        foreach($estudiantesobj as $estudiante){
+
+            $estudiantes[$estudiante->id] = $estudiante->cedula.' - '.$estudiante->nombre.' '.$estudiante->apellido;
+        }
+        $type_beca      = TypeBeca::all()->pluck('name','id');
+        $cupo = CupoBeca::find($id);
+        $cupo->load('estudiante','typeBeca');
+        //dd($cupo);
+        return view('cuposBecas.update',compact('cupo','estudiantes','type_beca'));
     }
 
     public function update(Request $request, $id)
     {
-        //
+        //dd($request->all());
+        $cupoVerificacion = CupoBeca::where('estudiante_id',$request->estudiante_id)->first();
+        $estudiante_old = Estudiante::find($request->estudiante_id);
+        if(empty($cupoVerificacion->id) != true){
+            flash('Cupo no no pudo ser actualizado porque este estudiante ya posee una beca', 'danger');
+        } else {
+            $incidencia = Incidencia::create([
+                'type_beca_id'      => $request->type_beca_id,
+                'estudiante_id'     => $request->estudiamte_old_id,
+                'explication'       => $request->observacion.' Estudiante que actualizaron - cedula: '.$estudiante_old->cedula
+            ]);
+            if(empty($incidencia->id) != true){
+                $cupo = CupoBeca::find($id);
+                $cupo->estudiante_id = $request->estudiante_id;
+                $cupo->type_beca_id  = $request->type_beca_id;
+                $cupo->update();
+                flash('Cupo actualizon', 'success');
+            } else {
+                flash('Cupo no no pudo ser actualizado', 'danger');
+            }
+        }
+        return redirect()->route('cuposbecas.index');
     }
 
     public function destroy(Request $request,$id)
@@ -109,7 +139,7 @@ class CuposBecasController extends Controller
         } else {
             flash('Cupo no eliminado', 'danger');
         }
-        
+
         return redirect()->route('cuposbecas.index');
     }
 

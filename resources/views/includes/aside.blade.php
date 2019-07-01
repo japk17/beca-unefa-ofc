@@ -1,8 +1,7 @@
 <aside class="main-sidebar sidebar-dark-primary elevation-4">
     <!-- Brand Logo -->
     <a href="/home" class="brand-link bg-primary">
-        <img src="/images/logounefa.jpg" alt="AdminLTE Logo" class="brand-image img-circle elevation-3"
-             style="opacity:">
+        <img src="/images/logounefa.jpg" alt="AdminLTE Logo" class="brand-image img-circle elevation-3" style="opacity:">
         <span class="brand-text font-weight-light">UNEFA</span>
     </a>
 
@@ -27,28 +26,28 @@
                 <!-- Add icons to the links using the .nav-icon class
 with font-awesome or any other icon font library -->
                 <!--<li class="nav-item has-treeview menu-open">
-                    <a href="#" class="nav-link active">
-                        <i class="nav-icon fa fa-dashboard"></i>
-                        <p>
-                            Starter Pages
-                            <i class="right fa fa-angle-left"></i>
-                        </p>
-                    </a>
-                    <ul class="nav nav-treeview">
-                        <li class="nav-item">
-                            <a href="#" class="nav-link active">
-                                <i class="fa fa-circle nav-icon"></i>
-                                <p>Active Page</p>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="#" class="nav-link">
-                                <i class="fa fa-circle-o nav-icon"></i>
-                                <p>Inactive Page</p>
-                            </a>
-                        </li>
-                    </ul>
-                </li>-->
+<a href="#" class="nav-link active">
+<i class="nav-icon fa fa-dashboard"></i>
+<p>
+Starter Pages
+<i class="right fa fa-angle-left"></i>
+</p>
+</a>
+<ul class="nav nav-treeview">
+<li class="nav-item">
+<a href="#" class="nav-link active">
+<i class="fa fa-circle nav-icon"></i>
+<p>Active Page</p>
+</a>
+</li>
+<li class="nav-item">
+<a href="#" class="nav-link">
+<i class="fa fa-circle-o nav-icon"></i>
+<p>Inactive Page</p>
+</a>
+</li>
+</ul>
+</li>-->
                 <li class="nav-item">
                     @role('super-admin')
                     <a href="{{route('usuarios.index')}}" class="nav-link">
@@ -61,21 +60,28 @@ with font-awesome or any other icon font library -->
                     @endrole
 
                 </li>
-                <li class="nav-item">
-                    <a href="{{route('cuposbecas.index')}}" class="nav-link">
+                <li class="nav-item has-treeview menu-open">
+                    <a href="#" class="nav-link active">
                         <i class="nav-icon fa fa-th"></i>
                         <p>
-                            Cupos Beca
+                            CUPOS DE BECAS
+                            <i class="right fa fa-angle-left"></i>
                         </p>
                     </a>
-                </li>
-                <li class="nav-item">
-                    <a href="{{route('incidencias.index')}}" class="nav-link">
-                        <i class="nav-icon fa fa-th"></i>
-                        <p>
-                            Incidencias de Becados
-                        </p>
-                    </a>
+                    <ul class="nav nav-treeview">
+                        <li class="nav-item">
+                            <a href="{{route('cuposbecas.index')}}" class="nav-link active">
+                                <i class="nav-icon"></i>
+                                <p>Asignar/Desincorporar</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="{{route('incidencias.index')}}" class="nav-link active">
+                                <i class="nav-icon"></i>
+                                <p>Incidencias</p>
+                            </a>
+                        </li>
+                    </ul>
                 </li>
             </ul>
         </nav>

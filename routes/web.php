@@ -24,7 +24,7 @@ Route::group(['middleware' => ['auth','role:super-admin']], function() {
     Route::get('users-delete/{id}', 'UsersController@destroy')->name('usuarios.delete');
 });
 
-Route::group(['prefix' => 'cuposbecas','middleware' => 'auth'], function() {
+Route::group(['prefix' => 'cuposbecas','middleware' => ['auth','role:super-admin|moderador']], function() {
     Route::resource('cuposbecas', 'CuposBecasController');
     Route::get('Add-cupo', 'CuposBecasController@addView')->name('add.view.cupo.beca');
     Route::get('pre-eliminar-cupo/{id}', 'CuposBecasController@eliminar')->name('pre-eliminar.cupo.beca');
