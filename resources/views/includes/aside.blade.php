@@ -61,7 +61,8 @@ Starter Pages
 
                 </li>
                 <li class="nav-item has-treeview menu-open">
-                    <a href="#" class="nav-link active">
+                @can('update user')
+                    <a href="#" class="nav-link">
                         <i class="nav-icon fa fa-th"></i>
                         <p>
                             CUPOS DE BECAS
@@ -70,18 +71,19 @@ Starter Pages
                     </a>
                     <ul class="nav nav-treeview">
                         <li class="nav-item">
-                            <a href="{{route('cuposbecas.index')}}" class="nav-link active">
+                            <a href="{{route('cuposbecas.index')}}" class="nav-link">
                                 <i class="nav-icon"></i>
                                 <p>Asignar/Desincorporar</p>
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="{{route('incidencias.index')}}" class="nav-link active">
+                            <a href="{{route('incidencias.index')}}" class="nav-link">
                                 <i class="nav-icon"></i>
                                 <p>Incidencias</p>
                             </a>
                         </li>
                     </ul>
+                    @endcan
                 </li>
             </ul>
         </nav>

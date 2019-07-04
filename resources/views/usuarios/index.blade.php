@@ -62,7 +62,7 @@
                 <div class="card-body">
                     @can('create user')
                     <div class="row justify-content-star">
-                        <a href="{{ url('/usuarios/create') }}" class="btn btn-success">Nuevo usuario</a>
+                        <a href="{{ url('/usuarios/create') }}" class="btn btn-success btn-flat">Nuevo usuario</a>
                     </div>
                     @endcan
                     </br>
@@ -115,6 +115,7 @@
         text-align: center;
         display: inline-block;
     }
+    
 </style>
 <script>
 
